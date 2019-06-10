@@ -8,7 +8,7 @@ router.get('/books', auth, handleGetAll);
 router.get('/books/:id',auth, handleGetOne);
 
 // Route Handlers
-function handleGetAll(req, res) {
+function handleGetAll(req, res, next) {
   let books = {
     count: 3,
     results: [
@@ -20,7 +20,7 @@ function handleGetAll(req, res) {
   res.status(200).json(books);
 }
 
-function handleGetOne(req, res) {
+function handleGetOne(req, res, next) {
   let book = {
     title:'Moby Dick',
   };
