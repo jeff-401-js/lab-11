@@ -2,6 +2,17 @@
 
 const User = require('./users-model.js');
 
+/**
+ * @module src/auth/middleware
+ */
+
+/**
+  * @param {Object} req - request object
+  * @param {Object} res - response object
+  * @param {function} next - calls next middleware
+  * @desc Middleware that performs basic authorization
+  */
+
 module.exports = (req, res, next) => {
 
   try {
