@@ -11,7 +11,7 @@ module.exports = {
     produces: [
       'application/json',
     ],
-    host: 'localhost:3000',
+    host: 'localhost:3001',
     schemes: ['http'],
     securityDefinitions: {
       basicAuth: {
@@ -20,5 +20,5 @@ module.exports = {
     },
   },
   basedir: __dirname,
-  files: ['../../src/api/*.js'],
+  files: ['../../src/routes/*.js'],
 };
