@@ -42,6 +42,7 @@ users.pre('save', function(next) {
  */
 
 users.statics.authenticateBasic = function(auth) {
+  //validation
   let query = {username:auth.username};
   return this.findOne(query)
     .then(user => user && user.comparePassword(auth.password))
@@ -68,9 +69,9 @@ users.methods.comparePassword = function(password) {
 users.methods.generateToken = function() {
   let tokenData = {
     id:this._id,
-    capabilities: (this.acl && this.acl.capabilities) || [],
+    role: this.role,
   };
-  return jwt.sign(tokenData, process.env.SECRET || 'changeit' );
+  return jwt.sign(tokenData, process.env.SECRET);
 };
 
 /**

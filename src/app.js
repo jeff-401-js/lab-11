@@ -17,11 +17,15 @@ const app = express();
 // App Level MW
 app.use(cors());
 app.use(morgan('dev'));
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use(router);
+
+app.use(express.static('docs'));
+
 app.use(authRouter);
+app.use(router);
 
 // Catchalls
 app.use(notFound);
