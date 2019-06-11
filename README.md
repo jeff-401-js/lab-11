@@ -7,7 +7,7 @@ Jeff
 ### Links and Resources
 * [submission PR](https://github.com/JeffLawrence1/lab-11/pull/1)
 * [travis](https://www.travis-ci.com/jeff-401-js/lab-11)
-* [heroku](https://murmuring-sea-94133.herokuapp.com/)
+* [heroku](https://guarded-falls-59195.herokuapp.com/)
 
 
 #### Documentation
@@ -18,16 +18,20 @@ Jeff
 
 ### Setup
 #### `.env` requirements
-* `PORT` - 3000
+* `PORT` - 3001
 * `MONGODB_URI` - mongodb://localhost:27017/lab11
 
 
 #### Running the app
 * `nodemon index.js`
-* Endpoint: GET`'/'`
-  * Show all.
-* Endpoint: POST`'/searches'`
-  * Create search.
+* Endpoint: GET`'/books'`
+  * Show books.
+* Endpoint: GET`'/books/:id'`
+  * Show one book.
+* Endpoint: POST`'/signup'`
+  * Create account.
+* Endpoint: GET`'/signin'`
+  * Signin.
 
 
   
