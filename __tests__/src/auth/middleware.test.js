@@ -3,6 +3,7 @@
 const supergoose = require('../../supergoose.js');
 const auth = require('../../../src/auth/middleware.js');
 const Users = require('../../../src/auth/users-model.js');
+require('dotenv').config();
 
 let users = {
   admin: {username: 'admin', password: 'password', role: 'admin'},
@@ -13,23 +14,26 @@ let users = {
 beforeAll(async (done) => {
   await supergoose.startDB();
   const adminUser = await new Users(users.admin).save();
+  console.log(adminUser);
   const editorUser = await new Users(users.editor).save();
+  console.log(editorUser);
   const userUser = await new Users(users.user).save();
-  done()
+  console.log(userUser);
+  done();
 });
+
 
 afterAll(supergoose.stopDB);
 
 describe('Auth Middleware', () => {
-
+  
   // admin:password: YWRtaW46cGFzc3dvcmQ=
   // admin:foo: YWRtaW46Zm9v
-
+  
   let errorObject = {'message': 'Invalid User ID/Password', 'status': 401, 'statusMessage': 'Unauthorized'};
-
+  
   describe('user authentication', () => {
-
-    let cachedToken;
+    
 
     it('fails a login for a user (admin) with the incorrect basic credentials', () => {
 
@@ -62,11 +66,11 @@ describe('Auth Middleware', () => {
 
       return middleware(req,res,next)
         .then( () => {
-          cachedToken = req.token;
           expect(next).toHaveBeenCalledWith();
         });
 
     }); // it()
+    
   });
 
 });
