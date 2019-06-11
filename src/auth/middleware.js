@@ -31,6 +31,12 @@ module.exports = (req, res, next) => {
     return _authError();
   }
 
+  /**
+  * basic authenticate function
+  * @param {function} next - calls next middleware
+  * @desc Middleware that performs basic authorization
+  */
+
   function _authBasic(authString) {
     let base64Buffer = Buffer.from(authString,'base64'); // <Buffer 01 02...>
     let bufferString = base64Buffer.toString(); // john:mysecret
@@ -40,6 +46,13 @@ module.exports = (req, res, next) => {
     return User.authenticateBasic(auth)
       .then( user => _authenticate(user) );
   }
+
+  /**
+  * basic authenticate user function
+  * @param {Object} user - user object
+  * @param {function} next - calls next middleware
+  * @desc Middleware that performs basic authorization
+  */
 
   function _authenticate(user) {
     if ( user ) {

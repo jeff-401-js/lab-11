@@ -50,7 +50,7 @@ describe('Auth Router', () => {
       });
 
     });
-    
+
   });
-  
+
 });
